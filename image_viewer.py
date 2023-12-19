@@ -16,15 +16,19 @@ def change_pic(state):
     global image_num
 
     #in case of 0 is the image in exibition
-    if image_num == 0 and state == 'next_pic':  #in case the current image is the second one
-        my_label.grid_forget() #delete the current image  
-        my_label = Label(image=list_img[0]) #shows the new img
-        my_label.grid(row=0, column=0, columnspan=5)
-        last.config(state=NORMAL)
+    if state == 'next_pic':
         image_num += 1 
+        my_label.grid_forget() #delete the current image  
+        my_label = Label(image=list_img[image_num]) 
+        my_label.grid(row=0, column=0, columnspan=5)
+
         print(image_num)
-    elif image_num == 0 and state == 'last_pic':
-        last.config(state=DISABLED) #disable the button
+
+    elif state == 'last_pic':
+        image_num -=1
+        my_label = Label(image=list_img[image_num]) 
+        my_label.grid(row=0, column=0, columnspan=5)
+        print(image_num)
         print('state check')
     #in case you can go foward
     elif image_num > 0 and image_num != len(list_img):
@@ -36,18 +40,8 @@ def change_pic(state):
     
        
 
-def image_zero(): 
-    '''shows the defalt image (index=0)'''
-    global my_label          
 
-    my_label = Label(image=list_img[0]) 
-    my_label.grid(row=0, column=0, columnspan=5)
-    #last.config(state=DISABLED) #need to be last command to acess the var
-    print(image_num)
-   
-    
-
-
+#put the imgs in a list
 img_1 = ImageTk.PhotoImage(Image.open('img1.png'))
 img_2 = ImageTk.PhotoImage(Image.open('img2.png'))
 img_3 = ImageTk.PhotoImage(Image.open('img3.png'))
@@ -67,7 +61,11 @@ if  image_num == 0:
     my_label = Label(image=list_img[0]) #shows the new img
     my_label.grid(row=0, column=0, columnspan=5)
     last.config(state=DISABLED)
-    image_num += 1
+
+    print(image_num)
+if image_num > 0:
+     last.config(state=NORMAL)
+    
 
 text.grid(row=3, column=2)
 next.grid(row=4, column=3)
