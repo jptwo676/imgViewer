@@ -1,7 +1,8 @@
 from tkinter import *
 from PIL import ImageTk,Image
+from func import *
 
-list_img = []
+
 
 class App(Tk): 
     def __init__(self, title, size):
@@ -19,9 +20,6 @@ class App(Tk):
 class Photos(ImageTk.PhotoImage): #declare photos and paths 
     def __init__(self, path):
         super().__init__()
-        self.path = path 
-
-    def declare_img(self):
         pass
 
     def add_img(self, list_img):
@@ -35,6 +33,5 @@ class Display():
     def __init__(self):
         pass
     
-
 
 App('Image viewer', (600,600))

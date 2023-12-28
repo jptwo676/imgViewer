@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import ImageTk,Image
 
+
 root = Tk()
 root.title('img viewer')
 root.attributes('-type', 'dialog')
