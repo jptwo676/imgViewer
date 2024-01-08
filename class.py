@@ -1,4 +1,4 @@
-from tkinter import *
+import tkinter
 from PIL import ImageTk,Image
 from func import *
  
@@ -19,25 +19,17 @@ class App(Tk):
         self.title(title) 
         self.attributes('-type', 'dialog')
         self.geometry(f'{size[0]}x{size[1]}')
-
         #self.minsize(f'{size[0]}x{size[1]}')
         
-
         #main loop
         self.mainloop()
 
-class Display(ImageTk.PhotoImage): #declare photos and paths 
-    pass
+def label_declaration():
+    label_display = Label()
+    label_display = Label(image=list_img[0]) 
+    label_display.grid(row=0, column=0, columnspan=5)
 
 
 class Buttons(Button):
-        def __init__(self)
-
-    def button_dec():
-        pass
-
-    def button_pos():
-        pass    
-
-
+    pass
 App('Image viewer', (600,600), list_img)
